@@ -55,14 +55,15 @@ else
     "\ 'do': 'bash install.sh',
     "\ }
 "Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'make release'}
-"Plug 'ionide/Ionide-vim', {
-    "\ 'do':  'make fsautocomplete',
-    "\}
+Plug 'ionide/Ionide-vim', {
+    \ 'do':  'make fsautocomplete',
+    \}
 
 "" Plugins
   " rice
+  Plug 'github/copilot.vim'
   Plug 'gruvbox-community/gruvbox'
-  Plug 'powerman/vim-plugin-AnsiEsc'
+  "Plug 'powerman/vim-plugin-AnsiEsc'
   Plug 'nvim-telescope/telescope-media-files.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'dylanaraps/wal.vim'
@@ -70,40 +71,40 @@ else
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
-  Plug 'nvim-treesitter/nvim-treesitter'
+  "Plug 'nvim-treesitter/nvim-treesitter'
   " fuzzy
-  Plug 'BurntSushi/ripgrep'
+  "Plug 'BurntSushi/ripgrep'
   Plug 'nvim-telescope/telescope-fzy-native.nvim'
   " snippets
-  Plug 'fhill2/telescope-ultisnips.nvim'
-  Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
+  "Plug 'fhill2/telescope-ultisnips.nvim'
+  "Plug 'SirVer/ultisnips'
+  "Plug 'honza/vim-snippets'
   " git
   Plug 'nvim-telescope/telescope-github.nvim'
-  Plug 'cljoly/telescope-repo.nvim'
-  Plug 'tpope/vim-fugitive'
+  "Plug 'cljoly/telescope-repo.nvim'
+  "Plug 'tpope/vim-fugitive'
   "help 
-  Plug 'sudormrfbin/cheatsheet.nvim'
+  "Plug 'sudormrfbin/cheatsheet.nvim'
   " movement
   Plug 'easymotion/vim-easymotion'
   Plug 'camgraff/telescope-tmux.nvim'
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'michaeljsmith/vim-indent-object'
+  "Plug 'christoomey/vim-tmux-navigator'
+  "Plug 'michaeljsmith/vim-indent-object'
   " lsp
   Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
   Plug 'fannheyward/telescope-coc.nvim'
-  Plug 'sheerun/vim-polyglot'
+  "Plug 'sheerun/vim-polyglot'
   "Plug 'lucasteles/fsi.vim'
   " misc
   Plug 'norcalli/nvim-terminal.lua'
   Plug 'preservim/nerdcommenter', { 'commit': 'a5d1663' }
   " markdown
-  Plug 'ellisonleao/glow.nvim'
+  "Plug 'ellisonleao/glow.nvim'
   " readme
   Plug 'vimwiki/vimwiki'
   Plug 'tools-life/taskwiki'
   "Plug 'yatli/fsharp-language-server'
-  Plug 'itchyny/calendar.vim'
+  "Plug 'itchyny/calendar.vim'
 "" End
 endif
 call plug#end()
@@ -117,7 +118,7 @@ nmap <silent> <leader><S-n> <Plug>(coc-diagnostic-prev)
 nnoremap ca <Cmd>:Telescope coc code_actions theme=cursor<Cr>
 nnoremap gt <Cmd>:Telescope coc type_definitions<Cr>
 nnoremap <silent>sh :call <SID>show_documentation()<Cr>
-nnoremap <leader>+ <Cmd>:Telescope ultisnips<Cr>
+"nnoremap <leader>+ <Cmd>:Telescope ultisnips<Cr>
 nmap <leader>rn <Cmd>:CocCommand document.renameCurrentWord<Cr>
 xmap ca  <Plug>(coc-codeaction-selected)
 nmap <leader>ca  <Plug>(coc-codeaction-selected)
@@ -257,32 +258,35 @@ endif
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 "" Require
+
+"require('telescope').load_extension('ultisnips')
 lua << EOF
 require('telescope').load_extension('coc')
 require('telescope').load_extension('media_files')
-require('telescope').load_extension('ultisnips')
+
 require'terminal'.setup()
 require('telescope').load_extension('gh')
 require'nvim-web-devicons'.get_icons()
 EOF
 "" VimWiki
-function! VimwikiFindIncompleteTasks()
-  lvimgrep /- \[ \]/ %:p
-  lopen
-endfunction
+"function! VimwikiFindIncompleteTasks()
+  "lvimgrep /- \[ \]/ %:p
+  "lopen
+"endfunction
 
-function! VimwikiFindAllIncompleteTasks()
-  VimwikiSearch /- \[ \]/
-  lopen
-endfunction
+"function! VimwikiFindAllIncompleteTasks()
+  "VimwikiSearch /- \[ \]/
+  "lopen
+"endfunction
 "" Rice colors
-function ToggleColors()
-    if (g:colors_name == "wal")
-        colorscheme gruvbox
-    else
-        colorscheme wal
-    endif
-endfunction
+colorscheme gruvbox
+"function ToggleColors()
+    "if (g:colors_name == "wal")
+        "colorscheme gruvbox
+    "else
+        "colorscheme wal
+    "endif
+"endfunction
 
 "" Fsharp
 autocmd BufNewFile,BufRead *.fs,*.fsi,*.fsx set filetype=fsharp
@@ -304,7 +308,7 @@ let g:vimwiki_list = [{'path': '$HOME/org/wiki',
       \ 'nested_syntaxes': {'python': 'python'},
       \ 'template_ext': '.html'}]
 "" Rice
-colorscheme wal
+"colorscheme wal
 "" NerdComments
 let g:NERDCreateDefaultMappings = 0
 let g:NERDCompactSexyComs = 1
@@ -330,4 +334,15 @@ endif
 "let g:coc_global_extensions = [
 "\ 'coc-fsharp',
 "\ ]
+
+te
+
+inoremap <silent><a-cr> copilot#Accept("")
+let g:copilot_no_tab_map = 1
+
+
+
+
+
+
 

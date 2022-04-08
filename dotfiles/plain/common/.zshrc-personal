@@ -22,6 +22,8 @@ alias picomrc="nvim ~/.config/i3/picom.conf"
 alias vimrc="nvim ~/.config/nvim/init.vim"
 alias tmuxrc="nvim ~/.tmux.conf"
 alias term="alacritty -e tmux a &; ;disown; exit "
+
+alias mountshared="vmhgfs-fuse -o allow_other -o auto_unmount .host:/ /home/skogix/shared/"
 #}}}
 #{{{ movement
 # ls
@@ -52,6 +54,7 @@ alias remove="sudo pacman -Rsc"
 alias update="sudo pacman -Syu"
 # tmux sessions
 alias config="tmux attach -t config"
+alias aa="tmux attach -t docs"
 #}}}
 #{{{ org
 alias readme="vim ~/org/wiki/index.wiki"

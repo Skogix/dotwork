@@ -1,4 +1,4 @@
-# Skogix dotfiles
+# Skogix dotfiles WORK
 
 - <https://dotgit.readthedocs.io/en/latest/getting_started.html>
 
