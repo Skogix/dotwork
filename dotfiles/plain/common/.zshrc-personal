@@ -1,6 +1,7 @@
 #{{{ path
 export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export PATH="$HOME/Skogix/bin/exercism:$PATH"
+export PATH="~/.dotnet/tools:$PATH"
 #}}}
 #{{{ export
 export EDITOR="/usr/bin/nvim"
@@ -58,7 +59,7 @@ alias aa="tmux attach -t docs"
 #}}}
 #{{{ org
 alias readme="vim ~/org/wiki/index.wiki"
-alias rr="vim ~/org/wiki/index.wiki"
+alias rr="vim ~/shared/Shared/org/wiki/index.wiki"
 #}}
 #{{{ programming
 #{{{ fsharp
